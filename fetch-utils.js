@@ -21,7 +21,8 @@ export async function getFamilies() {
 
 export async function deleteBunny(id) {
     // delete a single bunny using the id argument
-    // return checkError(response);
+    const response = await client.from('fuzzy_bunnies').delete().match({ id: id }).single();
+    return checkError(response);
 }
 
 export async function createBunny(bunny) {
@@ -65,6 +66,5 @@ export async function logout() {
 }
 
 function checkError({ data, error }) {
-    // eslint-disable-next-line no-console
     return error ? console.error(error) : data;
 }
