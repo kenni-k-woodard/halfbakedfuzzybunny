@@ -10,8 +10,6 @@ logoutButton.addEventListener('click', () => {
 });
 
 function displayFamilies(families) {
-    // fetch families from supabase
-    // clear out the familiesEl
     familiesEl.textContent = '';
     // loop through each family and for each family:
     for (let family of families) {
@@ -24,19 +22,19 @@ function displayFamilies(families) {
 
         nameEl.textContent = family.name;
 
-        // for (let bunny of family.fuzzy_bunnies) {
-        //     const bunnyEl = document.createElement('div');
+        for (let bunny of family.fuzzy_bunnies) {
+            const bunnyEl = document.createElement('div');
 
-        //     bunnyEl.classList.add('bunny');
-        //     bunnyEl.textContent = bunny.name;
+            bunnyEl.classList.add('bunny');
+            bunnyEl.textContent = bunny.name;
 
-        //     bunnyEl.addEventListener('click', async () => {
-        //         await deleteBunny(bunny.id);
-        //         const updatedFamilies = await getFamilies();
-        //         displayFamilies(updatedFamilies);
-        //     });
-        //     bunniesEl.append(bunnyEl);
-        // }
+            //     bunnyEl.addEventListener('click', async () => {
+            //         await deleteBunny(bunny.id);
+            //         const updatedFamilies = await getFamilies();
+            //         displayFamilies(updatedFamilies);
+            //     });
+            bunniesEl.append(bunnyEl);
+        }
         familyEl.append(nameEl, bunniesEl);
         familiesEl.append(familyEl);
     }
