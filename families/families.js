@@ -28,11 +28,11 @@ function displayFamilies(families) {
             bunnyEl.classList.add('bunny');
             bunnyEl.textContent = bunny.name;
 
-            //     bunnyEl.addEventListener('click', async () => {
-            //         await deleteBunny(bunny.id);
-            //         const updatedFamilies = await getFamilies();
-            //         displayFamilies(updatedFamilies);
-            //     });
+            bunnyEl.addEventListener('click', async () => {
+                await deleteBunny(bunny.id);
+                const updatedFamilies = await getFamilies();
+                displayFamilies(updatedFamilies);
+            });
             bunniesEl.append(bunnyEl);
         }
         familyEl.append(nameEl, bunniesEl);

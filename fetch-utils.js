@@ -10,8 +10,10 @@ export function getUser() {
 }
 
 export async function getFamilies() {
-    const response = await client.from('loving_families').select('*, fuzzy_bunnies (*)');
-    // .match({ 'fuzzy_bunnies.user_id': client.auth.session().user_id });
+    const response = await client
+        .from('loving_families')
+        .select('*, fuzzy_bunnies (*)')
+        .match({ 'fuzzy_bunnies.user_id': client.auth.session().user.id });
 
     // fetch all families and their bunnies KK
     return checkError(response);
@@ -63,5 +65,6 @@ export async function logout() {
 }
 
 function checkError({ data, error }) {
+    // eslint-disable-next-line no-console
     return error ? console.error(error) : data;
 }
