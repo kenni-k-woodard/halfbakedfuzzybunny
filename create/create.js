@@ -17,6 +17,7 @@ form.addEventListener('submit', async (e) => {
         name: name,
         family_id: familyID,
     });
+    location.replace('/');
 
     form.reset();
 });
